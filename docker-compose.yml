@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: ai-career-coach-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/app:/app/app
+      - ./backend/career_coach.db:/app/career_coach.db
+    environment:
+      - DATABASE_URL=sqlite+aiosqlite:///./career_coach.db
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    container_name: ai-career-coach-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    restart: unless-stopped
+
+networks:
+  default:
+    name: ai-career-coach-network
