@@ -4,6 +4,10 @@ from app.routers import chatbot, resume, skills, recommend, tracker
 from app.services.ai_models import ai_models
 from app.models.database import init_db
 import logging
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
