@@ -14,3 +14,4 @@ flake8==7.1.1
 python-dotenv==1.1.1
 SQLAlchemy==2.0.36
 aiosqlite==0.20.0
+openai==1.57.4

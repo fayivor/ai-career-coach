@@ -4,7 +4,10 @@ A full-stack AI-powered career coaching platform that helps users chat with an A
 
 ## Features
 
-- **AI Chatbot**: Chat with an AI career coach powered by Hugging Face models
+- **AI Chatbot**: Chat with an AI career coach powered by OpenAI GPT-3.5-turbo
+  - Real-time conversational AI with memory
+  - Personalized career guidance and recommendations
+  - Context-aware responses using conversation history
 - **Resume Analyzer**: Upload PDF/DOCX resumes for AI-powered analysis
 - **Skill Gap Analysis**: Compare your skills against target job roles
 - **Course Recommendations**: Get personalized course suggestions based on skill gaps
@@ -14,8 +17,8 @@ A full-stack AI-powered career coaching platform that helps users chat with an A
 
 ### Backend
 - **FastAPI**: Modern Python web framework
+- **OpenAI GPT-3.5-turbo**: Conversational AI for chatbot
 - **Hugging Face Transformers**: AI/ML models
-  - DialoGPT for chatbot
   - BART for text summarization
   - BERT for named entity recognition
   - Sentence Transformers for skill matching
@@ -233,14 +236,17 @@ Deploy the entire stack using Docker Compose on any cloud provider:
 ## Environment Variables
 
 ### Backend
+- `OPENAI_API_KEY`: Your OpenAI API key for GPT-3.5-turbo (required for chatbot)
 - `DATABASE_URL`: Database connection string (default: SQLite)
+
+See `backend/.env.example` for a template.
 
 ### Frontend
 - `VITE_API_URL`: Backend API URL (default: http://localhost:8000)
 
 ## AI Models Used
 
-1. **microsoft/DialoGPT-medium**: Conversational AI for chatbot
+1. **OpenAI GPT-3.5-turbo**: Conversational AI for chatbot with context memory
 2. **facebook/bart-large-cnn**: Text summarization for resumes
 3. **dslim/bert-base-NER**: Named entity recognition
 4. **sentence-transformers/all-MiniLM-L6-v2**: Semantic similarity for skill matching
@@ -250,8 +256,9 @@ Deploy the entire stack using Docker Compose on any cloud provider:
 - First startup may take 2-5 minutes as AI models are downloaded
 - Models are cached after first download
 - Resume analysis: ~5-10 seconds per document
-- Chatbot response: ~2-5 seconds per message
+- Chatbot response: ~1-3 seconds per message (GPT-3.5-turbo)
 - Skill gap analysis: ~1-2 seconds
+- OpenAI API costs: ~$0.002 per conversation (very affordable)
 
 ## Future Enhancements
 
